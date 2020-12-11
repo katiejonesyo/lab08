@@ -2,20 +2,22 @@ const pool = require('../utils/pool');
 
 module.exports = class Soups {
     id;
+    flavor;
     savory;
     color;
 
     constructor(row) {
       this.id = String(row.id);
+      this.flavor = row.flavor;
       this.savory = row.savory;
       this.color = row.color;
     }
 
     
-    static async insert({ savory, color }) {
+    static async insert({ flavor, savory, color }) {
       const { rows } = await pool.query(
-        'INSERT INTO soups (savory, color) VALUES ($1, $2) RETURNING *',
-        [savory, color]
+        'INSERT INTO soups (flavor, savory, color) VALUES ($1, $2, $3) RETURNING *',
+        [flavor, savory, color]
       );
       
       return new Soups(rows[0]);
@@ -38,15 +40,16 @@ module.exports = class Soups {
     }
 
     
-    static async update(id, { savory, color }) {
+    static async update(id, { flavor, savory, color }) {
       const { rows } = await pool.query(
         `UPDATE soups
                   SET
-                    savory=$1,
-                    color=$2
-                  WHERE id=$3
+                    flavor=$1,
+                    savory=$2,
+                    color=$3
+                  WHERE id=$4
                   RETURNING *`,
-        [savory, color, id]
+        [flavor, savory, color, id]
       );
       
       return new Soups(rows[0]);
