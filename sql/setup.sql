@@ -20,3 +20,5 @@ CREATE TABLE kts_soups (
     soups_id BIGINT REFERENCES soups(id),
     PRIMARY KEY(kts_id, soups_id )
 );
+
+
