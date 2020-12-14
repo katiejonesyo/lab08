@@ -17,5 +17,6 @@ CREATE TABLE soups (
 
 CREATE TABLE kts_soups (
     kts_id BIGINT REFERENCES kts(id),
-    soups_id BIGINT REFERENCES soups(id)
+    soups_id BIGINT REFERENCES soups(id),
+    PRIMARY KEY(kts_id, soups_id )
 );
