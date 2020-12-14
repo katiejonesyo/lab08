@@ -34,7 +34,7 @@ module.exports = class Kts {
         'SELECT * FROM kts WHERE id=$1',
         [id]);
 
-      return new kts(rows[0]);
+      return new Kts(rows[0]);
     }
 
     // Update
@@ -46,7 +46,7 @@ module.exports = class Kts {
               temp=$2
             WHERE id=$3
             RETURNING *`,
-        [mood, temp, id]
+        [ mood, temp , id]
       );
 
       return new Kts(rows[0]);

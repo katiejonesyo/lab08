@@ -14,7 +14,7 @@ app.post('/api/v1/kts', (req, res, next) => {
 });
 
 app.get('/api/v1/kts', (req, res, next) => {
-  Tree
+  Kts
     .find()
     .then(kts => res.send(kts))
     .catch(next);
@@ -30,14 +30,14 @@ app.get('/api/v1/kts/:id', (req, res, next) => {
 app.put('/api/v1/kts/:id', (req, res, next) => {
   Kts
     .update(req.params.id, req.body)
-    .then(tree => res.send(tree))
+    .then(kts => res.send(kts))
     .catch(next);
 });
 
 app.delete('/api/v1/kts/:id', (req, res, next) => {
   Kts
     .delete(req.params.id)
-    .then(tree => res.send(tree))
+    .then(kts => res.send(kts))
     .catch(next);
 });
 
