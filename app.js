@@ -42,7 +42,7 @@ app.delete('/api/v1/kts/:id', (req, res, next) => {
 });
 
 // Soup endpoints
-app.post('/soups', (req, res, next) => {
+app.post('/api/v1/soups', (req, res, next) => {
   Soups
     .insert(req.body)
     .then(soups => res.send(soups))
